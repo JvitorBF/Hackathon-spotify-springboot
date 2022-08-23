@@ -24,9 +24,10 @@ public class Album {
     @OneToMany(mappedBy = "album")
     private List<Musica> musicas;
 
-    public Album(Long id, String nome_album, String data) {
+    public Album(Long id, String nome_album, String data, List<Musica> musicas) {
         this.id = id;
         this.nome_album = nome_album;
         this.data = data;
+        this.musicas = musicas;
     }
 }

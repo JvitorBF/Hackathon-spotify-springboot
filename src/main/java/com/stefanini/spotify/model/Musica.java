@@ -36,33 +36,26 @@ public class Musica {
     @JoinColumn(name = "album_id")
     private Album album;
 
-    public Album getAlbum() {
-        return album;
-    }
-
-    public void setAlbum(Album album) {
-        this.album = album;
-    }
-
-    public Playlist getPlaylist() {
-        return playlist;
-    }
-
-    public void setPlaylist(Playlist playlist) {
-        this.playlist = playlist;
-    }
-
-    public Artista getArtista() {
-        return artista;
-    }
-
-    public void setArtista(Artista artista) {
-        this.artista = artista;
-    }
-
-    public Musica(Long id, String nome_musica, String duracao) {
+    public Musica(Long id, String nome_musica, String duracao, Artista artista, Playlist playlist, Album album) {
         this.id = id;
         this.nome_musica = nome_musica;
         this.duracao = duracao;
+        this.artista = artista;
+        this.playlist = playlist;
+        this.album = album;
     }
+
+    public Long getId() {return id;}
+    public void setId(Long id) {this.id = id;}
+    public String getNome_musica() {return nome_musica;}
+    public void setNome_musica(String nome_musica) {this.nome_musica = nome_musica;}
+    public String getDuracao() {return duracao;}
+    public void setDuracao(String duracao) {this.duracao = duracao;}
+    public Album getAlbum() {return album;}
+    public void setAlbum(Album album) {this.album = album;}
+    public Playlist getPlaylist() {return playlist;}
+    public void setPlaylist(Playlist playlist) {this.playlist = playlist;}
+    public Artista getArtista() {return artista;}
+    public void setArtista(Artista artista) {this.artista = artista;    }
+
 }
