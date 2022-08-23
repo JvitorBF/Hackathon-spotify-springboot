@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @Entity
@@ -20,6 +21,8 @@ public class Playlist {
     @Column(nullable = false)
     private String descricao;
 
+    @OneToMany(mappedBy = "playlist")
+    private List<Musica> musicas;
     public Playlist(Long id, String nome_playlist, String descricao) {
         this.id = id;
         this.nome_playlist = nome_playlist;

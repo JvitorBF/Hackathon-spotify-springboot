@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @Entity
@@ -19,6 +20,9 @@ public class Album {
 
     @Column(nullable = false)
     private String data;
+
+    @OneToMany(mappedBy = "album")
+    private List<Musica> musicas;
 
     public Album(Long id, String nome_album, String data) {
         this.id = id;
