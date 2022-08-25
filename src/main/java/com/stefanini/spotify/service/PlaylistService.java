@@ -1,5 +1,6 @@
 package com.stefanini.spotify.service;
 
+import com.stefanini.spotify.exception.PlaylistNotFoundException;
 import com.stefanini.spotify.model.Playlist;
 import com.stefanini.spotify.repository.PlaylistRepository;
 import org.springframework.stereotype.Service;
@@ -18,10 +19,9 @@ public class PlaylistService {
         return playlistRepository.findAll();
     }
 
-    /*
-    public Playlist findById(Long id) {
-        return playlistRepository.findById(id);
-    }*/
+    public Playlist findById(Long id) throws PlaylistNotFoundException {
+        return playlistRepository.findById(id).orElseThrow(() -> new PlaylistNotFoundException(id));
+    }
 
     public Playlist save(Playlist playlist) {
         return playlistRepository.save(playlist);

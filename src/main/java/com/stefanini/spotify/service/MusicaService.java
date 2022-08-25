@@ -1,5 +1,6 @@
 package com.stefanini.spotify.service;
 
+import com.stefanini.spotify.exception.MusicaNotFoundException;
 import com.stefanini.spotify.model.Musica;
 import com.stefanini.spotify.repository.MusicaRepository;
 import org.springframework.stereotype.Service;
@@ -18,10 +19,9 @@ public class MusicaService {
         return musicaRepository.findAll();
     }
 
-      /* Colocar exceptions
-    public Musica findById(Long id) {
-        return musicaRepository.findById(id);
-    }*/
+    public Musica findById(Long id) throws MusicaNotFoundException {
+        return musicaRepository.findById(id).orElseThrow(() -> new MusicaNotFoundException(id));
+    }
 
     public Musica save(Musica musica) {
         return musicaRepository.save(musica);

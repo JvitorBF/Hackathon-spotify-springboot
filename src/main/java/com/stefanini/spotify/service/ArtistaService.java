@@ -1,5 +1,6 @@
 package com.stefanini.spotify.service;
 
+import com.stefanini.spotify.exception.ArtistaNotFoundException;
 import com.stefanini.spotify.model.Artista;
 import com.stefanini.spotify.repository.ArtistaRepository;
 import org.springframework.stereotype.Service;
@@ -18,10 +19,9 @@ public class ArtistaService {
         return artistaRepository.findAll();
     }
 
-    /*
-    public Artista findById(Long id) {
-        return artistaRepository.findById(id);
-    }*/
+    public Artista findById(Long id) throws ArtistaNotFoundException {
+        return artistaRepository.findById(id).orElseThrow(() -> new ArtistaNotFoundException(id));
+    }
 
     public Artista save(Artista artista) {
         return artistaRepository.save(artista);

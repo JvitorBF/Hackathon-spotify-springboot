@@ -1,5 +1,6 @@
 package com.stefanini.spotify.service;
 
+import com.stefanini.spotify.exception.AlbumNotFoundException;
 import com.stefanini.spotify.model.Album;
 import com.stefanini.spotify.repository.AlbumRepository;
 import org.springframework.stereotype.Service;
@@ -18,10 +19,9 @@ public class AlbumService {
         return albumRepository.findAll();
     }
 
-    /* Colocar exceptions
-    public Album findAllById(Long id) {
-        return albumRepository.findAllById(id);
-    }*/
+    public Album findById(Long id) throws AlbumNotFoundException {
+        return albumRepository.findById(id).orElseThrow(() -> new AlbumNotFoundException(id));
+    }
 
     public Album save(Album album) {
         return albumRepository.save(album);
