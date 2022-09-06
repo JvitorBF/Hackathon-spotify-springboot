@@ -1,27 +1,21 @@
 package com.stefanini.spotify.dto;
 
 public class UsuarioDto {
-
-    private Long id;
     private String nome_usuario;
     private String email;
     private String aniversario;
     private String pais;
 
     public UsuarioDto() {
+
     }
 
-    public UsuarioDto(Long id, String nome_usuario, String email, String aniversario, String pais) {
-        this.id = id;
+    public UsuarioDto(String nome_usuario, String email, String aniversario, String pais) {
         this.nome_usuario = nome_usuario;
         this.email = email;
         this.aniversario = aniversario;
         this.pais = pais;
     }
-
-    public Long getId() {return id;}
-
-    public void setId(Long id) {this.id = id;}
 
     public String getNome_usuario() {return nome_usuario;}
 

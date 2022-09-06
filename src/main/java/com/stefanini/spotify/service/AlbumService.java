@@ -27,4 +27,7 @@ public class AlbumService {
         return albumRepository.save(album);
     }
 
+    public void delete(Album album) {
+        albumRepository.delete(album);
+    }
 }

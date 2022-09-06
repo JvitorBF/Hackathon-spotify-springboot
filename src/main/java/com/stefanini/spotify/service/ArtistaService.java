@@ -22,8 +22,9 @@ public class ArtistaService {
     public Artista findById(Long id) throws ArtistaNotFoundException {
         return artistaRepository.findById(id).orElseThrow(() -> new ArtistaNotFoundException(id));
     }
-
     public Artista save(Artista artista) {
         return artistaRepository.save(artista);
     }
+
+    public void delete(Artista artista) {artistaRepository.delete(artista);}
 }

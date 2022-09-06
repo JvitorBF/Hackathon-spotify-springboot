@@ -23,8 +23,11 @@ public class UsuarioService {
     public Usuario findById(Long id) throws UsuarioNotFoundException {
         return usuarioRepository.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
     }
-
+    
     public Usuario save(Usuario usuario) {
         return usuarioRepository.save(usuario);
+    }
+    public void delete(Usuario usuario) {
+        usuarioRepository.delete(usuario);
     }
 }

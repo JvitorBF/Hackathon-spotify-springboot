@@ -26,4 +26,7 @@ public class MusicaService {
     public Musica save(Musica musica) {
         return musicaRepository.save(musica);
     }
+
+    public void delete(Musica musica) {musicaRepository.delete(musica);}
+
 }
