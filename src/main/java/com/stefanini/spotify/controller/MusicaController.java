@@ -2,9 +2,7 @@ package com.stefanini.spotify.controller;
 
 import com.stefanini.spotify.dto.MusicaDto;
 import com.stefanini.spotify.exception.AlbumNotFoundException;
-import com.stefanini.spotify.exception.ArtistaNotFoundException;
 import com.stefanini.spotify.exception.MusicaNotFoundException;
-import com.stefanini.spotify.exception.PlaylistNotFoundException;
 import com.stefanini.spotify.mapper.MusicaDtoService;
 import com.stefanini.spotify.model.Musica;
 import com.stefanini.spotify.service.MusicaService;
@@ -25,23 +23,20 @@ public class MusicaController {
         this.musicaDtoService = musicaDtoService;
     }
 
-    // Funcionando?
     @RequestMapping(path = "/musica")
     public List<Musica> getAllMusicas() {
         return musicaService.findAllMusica();
     }
 
-    // Funcionando
     @PostMapping(value = "/musica")
-    public String saveMusica(@RequestBody MusicaDto musica) throws AlbumNotFoundException, PlaylistNotFoundException, ArtistaNotFoundException {
+    public String saveMusica(@RequestBody MusicaDto musica) throws AlbumNotFoundException {
         Musica newMusica = musicaDtoService.mapMusica(musica);
         musicaService.save(newMusica);
         return newMusica.getNome_musica() + ", salva com sucesso!";
     }
 
-    // Funcionando
     @PutMapping(value = "/musica/{id}")
-    public String updateMusica(@PathVariable("id") Long musicaId, @RequestBody MusicaDto musica) throws AlbumNotFoundException, PlaylistNotFoundException, ArtistaNotFoundException, MusicaNotFoundException {
+    public String updateMusica(@PathVariable("id") Long musicaId, @RequestBody MusicaDto musica) throws MusicaNotFoundException, AlbumNotFoundException {
         Musica repo = musicaService.findById(musicaId);
         repo = musicaDtoService.mapMusica(musica);
         repo.setId(musicaId);
