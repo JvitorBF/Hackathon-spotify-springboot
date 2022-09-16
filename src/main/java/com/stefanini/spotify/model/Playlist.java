@@ -3,6 +3,7 @@ package com.stefanini.spotify.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,12 +18,16 @@ public class Playlist {
     private String nome_playlist;
     @Column(nullable = false)
     private String descricao;
-    @OneToMany(mappedBy = "playlist")
+    @ManyToMany
+    @JoinTable(name = "playlist_musica",
+            joinColumns = @JoinColumn(name = "playlist_id"),
+            inverseJoinColumns = @JoinColumn(name = "musica_id"))
     private List<Musica> musicas;
-    @ManyToOne
     @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
+
     public Playlist(Long id, String nome_playlist, String descricao, List<Musica> musicas, Usuario usuario) {
         this.id = id;
         this.nome_playlist = nome_playlist;
@@ -30,6 +35,22 @@ public class Playlist {
         this.musicas = musicas;
         this.usuario = usuario;
     }
-    public Usuario getUsuario() {return usuario;}
-    public void setUsuario(Usuario usuario) {this.usuario = usuario;}
+    public Usuario getUsuario() {
+        return usuario;
+    }
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public List<Musica> getMusicas() {
+        return musicas;
+    }
+
+    public void setMusicas(List<Musica> musicas) {
+        this.musicas = musicas;
+    }
+
+    public void addMusica(Musica musica) {
+        this.musicas.add(musica);
+    }
 }
