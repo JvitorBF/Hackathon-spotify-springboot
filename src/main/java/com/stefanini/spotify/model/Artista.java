@@ -18,7 +18,10 @@ public class Artista {
     @Column(nullable = false)
     private String nome_artista;
 
-    @OneToMany(mappedBy = "artista")
+    @ManyToMany
+    @JoinTable(name = "artista_musica",
+            joinColumns = @JoinColumn(name = "artista_id"),
+            inverseJoinColumns = @JoinColumn(name = "musica_id"))
     private List<Musica> musicas;
 
     public Artista(Long id, String nome_artista, List<Musica> musicas) {
