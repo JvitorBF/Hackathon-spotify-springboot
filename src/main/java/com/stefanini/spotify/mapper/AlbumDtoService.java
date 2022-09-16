@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 public class AlbumDtoService {
 
     public Album mapAlbum(AlbumDto album) {
-        Album newAlbum = new Album(null, album.getNome_album(), album.getData(), null);
+        Album newAlbum = new Album(null,
+                album.getNome_album(),
+                album.getData(),
+                null);
         return newAlbum;
     }
 }
