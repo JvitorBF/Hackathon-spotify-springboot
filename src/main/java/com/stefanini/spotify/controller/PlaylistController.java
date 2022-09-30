@@ -44,13 +44,15 @@ public class PlaylistController {
     @PutMapping(value = "/playlist/{id}")
     public String updatePlaylist(@PathVariable("id") Long playlistId, @RequestBody PlaylistDto playlist) throws PlaylistNotFoundException, UsuarioNotFoundException {
         Playlist repo = playlistService.findById(playlistId);
+        List<Musica> musicas = repo.getMusicas();
         repo = playlistDtoService.mapPlaylist(playlist);
         repo.setId(playlistId);
+        repo.setMusicas(musicas);
         playlistService.save(repo);
         return "Playlist atualizada";
     }
 
-    @PutMapping(value = "/playlist/")
+    @PutMapping(value = "/playlist")
     public String updatePlaylist(@RequestParam Long playlistId, @RequestParam Long musicaId) throws PlaylistNotFoundException, MusicaNotFoundException {
         Musica musicaRepo = musicaService.findById(musicaId);
         Playlist playlistRepo = playlistService.findById(playlistId);

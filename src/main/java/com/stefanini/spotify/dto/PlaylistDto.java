@@ -4,17 +4,15 @@ public class PlaylistDto {
     private Long tag;
     private String nome_playlist;
     private String descricao;
-    private Long musica;
     private Long usuario;
 
     public PlaylistDto() {
     }
 
-    public PlaylistDto(Long tag, String nome_playlist, String descricao, Long musica, Long usuario) {
+    public PlaylistDto(Long tag, String nome_playlist, String descricao, Long usuario) {
         this.tag = tag;
         this.nome_playlist = nome_playlist;
         this.descricao = descricao;
-        this.musica = musica;
         this.usuario = usuario;
     }
 
@@ -40,14 +38,6 @@ public class PlaylistDto {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public Long getMusica() {
-        return musica;
-    }
-
-    public void setMusica(Long musica) {
-        this.musica = musica;
     }
 
     public Long getUsuario() {

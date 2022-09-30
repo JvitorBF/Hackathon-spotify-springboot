@@ -1,14 +1,12 @@
 package com.stefanini.spotify.mapper;
+
 import com.stefanini.spotify.dto.PlaylistDto;
 import com.stefanini.spotify.exception.UsuarioNotFoundException;
-import com.stefanini.spotify.model.Musica;
 import com.stefanini.spotify.model.Playlist;
 import com.stefanini.spotify.model.Usuario;
 import com.stefanini.spotify.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class PlaylistDtoService {
@@ -30,13 +28,4 @@ public class PlaylistDtoService {
                 usuario);
         return newPlaylist;
     }
-
-    public Playlist addPlaylist_musica(Playlist playlistRepo) {
-        List<Musica> musicas = playlistRepo.getMusicas();
-        playlistRepo.setMusicas(musicas);
-        return playlistRepo;
-    }
-
-
-
 }

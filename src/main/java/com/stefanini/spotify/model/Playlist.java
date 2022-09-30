@@ -35,9 +35,11 @@ public class Playlist {
         this.musicas = musicas;
         this.usuario = usuario;
     }
+
     public Usuario getUsuario() {
         return usuario;
     }
+
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
