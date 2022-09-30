@@ -19,14 +19,18 @@ public class Artista {
     private String nome_artista;
 
     @ManyToMany
-    @JoinTable(name = "artista_musica",
+    @JoinTable(name = "artista_album",
             joinColumns = @JoinColumn(name = "artista_id"),
-            inverseJoinColumns = @JoinColumn(name = "musica_id"))
-    private List<Musica> musicas;
+            inverseJoinColumns = @JoinColumn(name = "album_id"))
+    private List<Album> albuns;
 
-    public Artista(Long id, String nome_artista, List<Musica> musicas) {
+    public Artista(Long id, String nome_artista, List<Album> albuns) {
         this.id = id;
         this.nome_artista = nome_artista;
-        this.musicas = musicas;
+        this.albuns = albuns;
+    }
+
+    public void addAlbum(Album album) {
+        this.albuns.add(album);
     }
 }
