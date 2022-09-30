@@ -1,21 +1,16 @@
 package com.stefanini.spotify.dto;
 
-import com.stefanini.spotify.model.Artista;
-import java.util.List;
-
 public class MusicaDto {
     private String nome_musica;
     private String duracao;
-    private List<Artista> artista;
     private Long album;
 
     public MusicaDto() {
     }
 
-    public MusicaDto(String nome_musica, String duracao, List<Artista> artista, Long album) {
+    public MusicaDto(String nome_musica, String duracao, Long album) {
         this.nome_musica = nome_musica;
         this.duracao = duracao;
-        this.artista = artista;
         this.album = album;
     }
 
@@ -33,14 +28,6 @@ public class MusicaDto {
 
     public void setDuracao(String duracao) {
         this.duracao = duracao;
-    }
-
-    public List<Artista> getArtista() {
-        return artista;
-    }
-
-    public void setArtista(List<Artista> artista) {
-        this.artista = artista;
     }
 
     public Long getAlbum() {

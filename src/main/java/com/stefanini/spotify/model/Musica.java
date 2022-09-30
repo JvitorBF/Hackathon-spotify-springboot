@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @NoArgsConstructor
 @Entity
@@ -22,21 +21,15 @@ public class Musica {
     @Column(nullable = false)
     private String duracao;
 
-    @ManyToMany(mappedBy = "musicas")
-    private List<Artista> artista;
-
-
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "album_id")
     private Album album;
 
-    public Musica(Long id, String nome_musica, String duracao, List<Artista> artista,Album album) {
+    public Musica(Long id, String nome_musica, String duracao, Album album) {
         this.id = id;
         this.nome_musica = nome_musica;
         this.duracao = duracao;
-        this.artista = artista;
-
         this.album = album;
     }
 
@@ -63,15 +56,6 @@ public class Musica {
     public void setDuracao(String duracao) {
         this.duracao = duracao;
     }
-
-    public List<Artista> getArtista() {
-        return artista;
-    }
-
-    public void setArtista(List<Artista> artista) {
-        this.artista = artista;
-    }
-
 
     public Album getAlbum() {
         return album;

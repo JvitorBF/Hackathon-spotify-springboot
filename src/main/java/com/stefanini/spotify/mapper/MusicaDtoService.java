@@ -1,4 +1,5 @@
 package com.stefanini.spotify.mapper;
+
 import com.stefanini.spotify.dto.MusicaDto;
 import com.stefanini.spotify.exception.AlbumNotFoundException;
 import com.stefanini.spotify.model.Album;
@@ -30,7 +31,6 @@ public class MusicaDtoService {
         Musica newMusica = new Musica(null,
                 musica.getNome_musica(),
                 musica.getDuracao(),
-                null,
                 album);
         return newMusica;
     }
