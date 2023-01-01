@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpbDataSourceConfig">
+    <data-sources>
+      <data-source id="eca756c6-a276-4b6b-b2e3-0ead50eb7ab4" name="spotify" url="jdbc:postgresql://localhost/spotify" driverClass="org.postgresql.Driver" />
+    </data-sources>
+  </component>
+</project>
