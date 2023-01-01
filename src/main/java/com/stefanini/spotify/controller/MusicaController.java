@@ -29,7 +29,7 @@ public class MusicaController {
     }
 
     @GetMapping(value = "/api/musica/{id}")
-    public Musica getMusic(@PathVariable("id") Long musicaId) throws MusicaNotFoundException {
+    public Musica getMusi(@PathVariable("id") Long musicaId) throws MusicaNotFoundException {
         return musicaService.findById(musicaId);
     }
     @PostMapping(value = "/api/musica")
